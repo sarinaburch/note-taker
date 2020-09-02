@@ -10,26 +10,26 @@ app.use(express.json());
 app.use(express.static('public'));
 
 
-var notes = "hey"
-
 //routes
 app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "index.html"));
+    res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 app.get("/notes", function(req, res) {
-    res.sendFile(path.join(__dirname, "./notes.html"));
+    res.sendFile(path.join(__dirname, "notes.html"));
 });
 app.get("/api/notes", function(req, res) {
-    res.json(dbJson)
-})
-app.post("/notes:id", function(req, res) {
+  return res.json(dbJson)
+});
+app.post("/api/notes", function(req, res) {
     var notes = req.body;
+    res.json(notes)
 });
-app.delete("/api/notes", function(req, res) {
-    res.sendFile
-});
+
+// app.delete("/api/notes", function(req, res) {
+//     res.sendFile
+// });
 app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./index.html"))
+    res.sendFile(path.join(__dirname, "/public/index.html"))
 });
 //Listener
 app.listen(PORT, function() {
