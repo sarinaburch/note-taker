@@ -3,14 +3,6 @@
 ## Description 
         Note Taker is a web application that will write, save and delete notes. This application was built with an Express backen and saved and retrieved data from a JSON file.
 
-## Table of Contents
-* [Installation](installation)
-* [Usage](usage)
-* [License](license)
-* [Contributing](contribution)
-* [Tests](test)
-* [Questions](questions)
-
 ## Installation
         npm i
     
