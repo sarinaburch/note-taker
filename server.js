@@ -4,7 +4,7 @@ var app = express();
 var PORT = 3000;
 var dbJson = require("./db/db.json");
 var path = require("path");
-
+var fs = require("fs")
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
@@ -17,21 +17,23 @@ app.get("/", function(req, res) {
 app.get("/notes", function(req, res) {
     res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
-
-
 app.get("/api/notes", function(req, res) {
    res.json(dbJson)
 });
 
 //creates new note
-app.post("/api/notes", function(req, res) {
+app.post("/api/notes/", function(req, res) {
+    res.json(dbJson);
     dbJson.push(req.body);
-    
 });
-
-// app.delete("/api/notes", function(req, res) {
-//     res.sendFile
-// });
+// deletes notes 
+app.delete("/api/notes/:id", function(req, res) {
+    var note = dbJson.find(function(id, id){
+    dbJson.splice( dbJson.indexOf(note), 1);
+    });
+    res.end("Deleted")
+    })
+ 
 app.get("*", function(req, res) {
     res.sendFile(path.join(__dirname, "/public/index.html"))
 });
