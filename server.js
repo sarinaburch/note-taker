@@ -1,7 +1,7 @@
 //Dependences
 var express = require("express");
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 var dbJson = require("./db/db.json");
 var path = require("path");
 
